@@ -1,0 +1,60 @@
+#!/usr/bin/python
+
+def displayPathtoPrincess(n,grid):
+    #locating M(x_m,y_m):
+    x_m=int(n/2); y_m=x_m;
+    
+    #Locate P(x_p,y_p):
+    for i in (0,n-1):
+        for j in (0,n-1):
+            if((grid[i][j]=='p') or (grid[i][j]=='P')):
+                x_p=i; y_p=j;
+                break;
+    
+    
+    if((x_p not in (0,n-1)) and (y_p not in (0,n-1))):
+        print("The princess SHOULD BE in one of the corners of the grid ONLY\n")
+        
+                        #No. of moves STEPS=x+y:
+                        #steps=abs(x_p-x_m)+abs(y_p-y_m)
+    
+    #RIGHT:y_p-y_m--> +   DOWN: x_p-x_m--> +   LEFT: y_p-y_m--> -  UP: x_p-x_m--> -
+    #Move M to correct column, then correct row to reach P:
+    
+    while(y_m!=y_p):
+        while(x_m!=x_p):
+            if(x_m<x_p):
+                x_m=x_m+1; print("DOWN");
+            else:
+                x_m=x_m-1; print("UP");
+        if(y_m<y_p):
+            y_m=y_m+1; print("RIGHT");         
+        else:
+            y_m=y_m-1; print("LEFT");
+        
+            
+     #Print grid with new location of M:       
+    
+    #   for i in range(0,n):
+     #   for j in range(0,n):
+      #      if(i=j=int(n/2)):
+       #         print("-")
+        #    if(grid[i][j]=='p' or grid[i][j]=='P'):
+        #        print("M")
+         #   else:
+          #      print(grid[i][j])
+        #print('\n')
+        
+    
+
+
+m = int(input()); 
+
+if(m%2==0 or m<3 or m>=100): 
+    print("Enter odd integer between 2 and 100\n");
+    
+grid = [] 
+for i in range(0, m): 
+    grid.append(input().strip())
+
+displayPathtoPrincess(m,grid)
